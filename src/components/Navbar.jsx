@@ -1,8 +1,8 @@
 import React from "react"
 import { Box, Flex, Input, Button } from "@chakra-ui/react"
 import { BsFillPenFill, BsSearch } from "react-icons/bs"
-import { styled } from "styled-components"
 import { useState } from "react"
+import { Link } from "react-router-dom"
 
 const Navbar = () => {
    const [isActive, setIsActive] = useState(true)
@@ -14,50 +14,57 @@ const Navbar = () => {
       setIsActive(false)
    }
 
-   const BtnStyle = styled.button`
-      color: ${(props) => (props.isActive ? "white" : "#3333")};
-      background-color: ${(props) => (props.isActive ? "#9f7aea" : "#eeee")};
-      width: 120px;
-      margin-right: 10px;
-      padding: 5px 0;
-      border-radius: 50px;
-      transition: all 300ms ease-in;
-
-      &:hover {
-         opacity: 0.7;
-      }
-   `
-
-   const AddIconStyle = styled.p`
-      color: white;
-      background: #9f7aea;
-      width: 40px;
-      height: 40px;
-      border-radius: 50px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-   `
-
    return (
-      <Flex as="nav" h={73} alignItems={"center"} justify={"space-between"} px={5}>
+      <Flex
+         as="nav"
+         h={73}
+         alignItems={"center"}
+         justify={"space-between"}
+         px={5}
+         borderBottom={"1px solid"}
+         borderColor={"gray.300"}>
          <Flex alignItems={"center"} gap={2}>
             <BsSearch />
             <Input type="search" w={250} placeholder="Search..." variant="unstyled" />
          </Flex>
 
-         <Box>
-            <BtnStyle isActive={isActive} onClick={handleSetActive}>
-               Task
-            </BtnStyle>
-            <BtnStyle isActive={!isActive} onClick={handleSetInactive}>
-               Calendar
-            </BtnStyle>
-         </Box>
+         <Flex flex={1} alignItems={"center"} justify={"center"} pr={"15rem"} gap={2}>
+            <Link to={"/"}>
+               <Button
+                  colorScheme={isActive ? "purple" : "gray"}
+                  color={isActive ? "white" : "gray.500"}
+                  w={32}
+                  h={9}
+                  variant="solid"
+                  onClick={handleSetActive}>
+                  Task
+               </Button>
+            </Link>
 
-         <AddIconStyle>
+            <Link to={"/calendar"}>
+               <Button
+                  colorScheme={!isActive ? "purple" : "gray"}
+                  color={!isActive ? "white" : "gray.500"}
+                  w={32}
+                  h={9}
+                  variant="solid"
+                  onClick={handleSetInactive}>
+                  Calendar
+               </Button>
+            </Link>
+         </Flex>
+
+         <Flex
+            as="button"
+            align={"center"}
+            justify={"center"}
+            color="white"
+            bg="#9f7aea"
+            w={"40px"}
+            h={"40px"}
+            borderRadius="50%">
             <BsFillPenFill />
-         </AddIconStyle>
+         </Flex>
       </Flex>
    )
 }

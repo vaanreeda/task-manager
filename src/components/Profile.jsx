@@ -1,25 +1,10 @@
 import React from "react"
-import { Box, Heading, Image, Text, VStack, Flex, Progress } from "@chakra-ui/react"
+import { Box, Heading, Image, Text, VStack, Flex, Progress, Button } from "@chakra-ui/react"
 import profileImg from "../assets/1678104648131.JPG"
 import { AiFillSetting, AiFillMail, AiFillBell } from "react-icons/ai"
 import { styled } from "styled-components"
 
 const Profile = () => {
-   const IconStyle = styled.p`
-      background: #eeee;
-      width: 40px;
-      height: 40px;
-      padding: 7px;
-      border-radius: 50%;
-      transition: all 300ms ease-in;
-      cursor: pointer;
-
-      &:hover {
-         background: #9f7aea;
-         color: white;
-      }
-   `
-
    return (
       <Box h={"100vh"} w={350} borderRight={"1px solid"} borderColor={"gray.300"}>
          <Box py={6} h={73} borderBottom={"1px solid"} borderColor={"gray.300"}>
@@ -44,18 +29,48 @@ const Profile = () => {
                </Text>
             </VStack>
             <Flex alignItems={"center"} justify={"center"} gap={5} fontSize={26} mt={5} color={"purple.400"}>
-               <IconStyle>
+               <Button
+                  sx={{
+                     bg: "#eee",
+                     w: "40px",
+                     h: "40px",
+                     p: "7px",
+                     borderRadius: "50%",
+                     transition: "all 300ms ease-in",
+                     color: "#9f7aea",
+                  }}
+                  _hover={{ bg: "#9f7aea", color: "white" }}>
                   <AiFillSetting />
-               </IconStyle>
-               <IconStyle>
+               </Button>
+               <Button
+                  sx={{
+                     bg: "#eee",
+                     w: "40px",
+                     h: "40px",
+                     p: "7px",
+                     borderRadius: "50%",
+                     transition: "all 300ms ease-in",
+                     color: "#9f7aea",
+                  }}
+                  _hover={{ bg: "#9f7aea", color: "white" }}>
                   <AiFillMail />
-               </IconStyle>
-               <IconStyle>
+               </Button>
+               <Button
+                  sx={{
+                     bg: "#eee",
+                     w: "40px",
+                     h: "40px",
+                     p: "7px",
+                     borderRadius: "50%",
+                     transition: "all 300ms ease-in",
+                     color: "#9f7aea",
+                  }}
+                  _hover={{ bg: "#9f7aea", color: "white" }}>
                   <AiFillBell />
-               </IconStyle>
+               </Button>
             </Flex>
 
-            <Box px={5} mt={8}>
+            <Box px={10} mt={8}>
                <Box>
                   <Text fontSize={12} fontWeight={500} textAlign={"end"} mb={2} color={"gray.500"}>
                      12/34
