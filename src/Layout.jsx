@@ -6,9 +6,9 @@ import Navbar from "./components/Navbar"
 
 const Layout = () => {
    return (
-      <Flex>
+      <Flex maxW={"1800px"} h={"100vh"} mx={"auto"} border={"1px solid"} borderColor={"gray.300"}>
          <Profile />
-         <Flex flexDirection={"column"} flexGrow={1}>
+         <Flex flexDirection={"column"} flex={1}>
             <Navbar />
             <Outlet />
          </Flex>

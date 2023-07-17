@@ -17,7 +17,7 @@ const Navbar = () => {
    return (
       <Flex
          as="nav"
-         h={73}
+         minH={"73px"}
          alignItems={"center"}
          justify={"space-between"}
          px={5}
@@ -28,7 +28,7 @@ const Navbar = () => {
             <Input type="search" w={250} placeholder="Search..." variant="unstyled" />
          </Flex>
 
-         <Flex flex={1} alignItems={"center"} justify={"center"} pr={"15rem"} gap={2}>
+         <Flex alignItems={"center"} justify={"center"} pr={"15rem"} gap={2}>
             <Link to={"/"}>
                <Button
                   colorScheme={isActive ? "purple" : "gray"}
@@ -41,7 +41,7 @@ const Navbar = () => {
                </Button>
             </Link>
 
-            <Link to={"/calendar"}>
+            {/* <Link to={"/calendar"}>
                <Button
                   colorScheme={!isActive ? "purple" : "gray"}
                   color={!isActive ? "white" : "gray.500"}
@@ -51,7 +51,7 @@ const Navbar = () => {
                   onClick={handleSetInactive}>
                   Calendar
                </Button>
-            </Link>
+            </Link> */}
          </Flex>
 
          <Flex

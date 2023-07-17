@@ -2,11 +2,10 @@ import React from "react"
 import { Box, Heading, Image, Text, VStack, Flex, Progress, Button } from "@chakra-ui/react"
 import profileImg from "../assets/1678104648131.JPG"
 import { AiFillSetting, AiFillMail, AiFillBell } from "react-icons/ai"
-import { styled } from "styled-components"
 
 const Profile = () => {
    return (
-      <Box h={"100vh"} w={350} borderRight={"1px solid"} borderColor={"gray.300"}>
+      <Box as="section" h={"100vh"} w={"350px"} borderRight={"1px solid"} borderColor={"gray.300"}>
          <Box py={6} h={73} borderBottom={"1px solid"} borderColor={"gray.300"}>
             <Heading textAlign={"center"} textTransform={"uppercase"} color={"purple.400"} fontSize={20}>
                task manager
