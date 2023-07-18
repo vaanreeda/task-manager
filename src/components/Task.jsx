@@ -4,23 +4,32 @@ import { FiTrash2 } from "react-icons/fi"
 import { RiCloseFill } from "react-icons/ri"
 import { AiOutlineClockCircle } from "react-icons/ai"
 import { BsCheck, BsSend } from "react-icons/bs"
+import { useTaskList } from "../context/TaskListContext"
 
-const Task = ({ list, inSelected }) => {
+const Task = ({ inSelected }) => {
+   const { taskListData, deleteTask } = useTaskList()
+
    const [opacity, setOpacity] = useState(1)
    const [taskSelected, setTaskSelected] = useState(null)
 
    useEffect(() => {
       setOpacity(0)
       const timeout = setTimeout(() => {
-         setTaskSelected(list[inSelected])
+         setTaskSelected(taskListData[inSelected])
          setOpacity(1)
       }, 300)
       return () => clearTimeout(timeout)
-   }, [inSelected, list])
+   }, [inSelected, taskListData])
 
    return (
-      <Box as="section" w={"full"} h={"full"} position={"relative"}>
-         <Flex w={"full"} h={20} borderBottom={"1px solid"} borderColor={"gray.300"}>
+      <Flex
+         as="section"
+         w={"full"}
+         h={"full"}
+         flexDirection={"column"}
+         justify={"space-between"}
+         style={{ overflow: "hidden" }}>
+         <Flex w={"full"} h={"80px"} borderBottom={"1px solid"} borderColor={"gray.300"}>
             <Flex
                w={"full"}
                h={"full"}
@@ -37,12 +46,12 @@ const Task = ({ list, inSelected }) => {
                   bg={"purple.100"}
                   color={"purple.500"}
                   fontSize={"20px"}>
-                  <FiTrash2 />
+                  <FiTrash2 onClick={() => deleteTask(taskSelected.id)} />
                </Button>
             </Flex>
          </Flex>
 
-         <Flex gap={5} p={5} style={{ opacity: opacity, transition: "opacity 0.3s ease" }}>
+         <Flex flex={1} gap={5} p={5} style={{ opacity: opacity, transition: "opacity 0.3s ease" }}>
             <Flex
                align={"center"}
                justify={"center"}
@@ -74,13 +83,13 @@ const Task = ({ list, inSelected }) => {
             </Flex>
          </Flex>
 
-         <Flex bg={"gray.100"} h={90} position={"absolute"} bottom={0} left={0} right={0} align={"center"}>
+         <Flex bg={"gray.100"} h={"80px"} align={"center"}>
             <Input variant={"unstyled"} type="text" placeholder="Write a comment..." pl={8} />
             <Button colorScheme={"purple"} h={"full"} borderRadius={0} fontSize={30} px={8}>
                <BsSend />
             </Button>
          </Flex>
-      </Box>
+      </Flex>
    )
 }
 

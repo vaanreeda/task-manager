@@ -5,7 +5,7 @@ import { AiFillSetting, AiFillMail, AiFillBell } from "react-icons/ai"
 
 const Profile = () => {
    return (
-      <Box as="section" h={"100vh"} w={"350px"} borderRight={"1px solid"} borderColor={"gray.300"}>
+      <Box as="section" h={"100%"} w={"350px"} borderRight={"1px solid"} borderColor={"gray.300"}>
          <Box py={6} h={73} borderBottom={"1px solid"} borderColor={"gray.300"}>
             <Heading textAlign={"center"} textTransform={"uppercase"} color={"purple.400"} fontSize={20}>
                task manager

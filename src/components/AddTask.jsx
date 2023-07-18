@@ -15,9 +15,12 @@ import {
 } from "@chakra-ui/react"
 import { addDoc, collection, serverTimestamp } from "firebase/firestore"
 import { useState } from "react"
-import { db } from "../../Config/firebase"
+import { db } from "../Config/firebase"
+import { useTaskList } from "../context/TaskListContext"
 
 const AddTask = ({ getData }) => {
+   const { getTaskListData } = useTaskList()
+
    const { isOpen, onOpen, onClose } = useDisclosure()
    const [newTaskData, setNewTaskData] = useState({
       title: "",
@@ -41,6 +44,10 @@ const AddTask = ({ getData }) => {
       try {
          const docRef = await addDoc(collection(db, "list"), dataWithTimestamp)
          console.log("Document added with ID: ", docRef.id)
+         setNewTaskData({
+            title: "",
+            desc: "",
+         })
          onClose()
          toast({
             title: "Task Added.",
@@ -48,7 +55,7 @@ const AddTask = ({ getData }) => {
             duration: 5000,
             isClosable: true,
          })
-         getData()
+         getTaskListData()
       } catch (error) {
          console.error("Error adding document: ", error)
       }

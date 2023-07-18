@@ -8,7 +8,7 @@ const Layout = () => {
    return (
       <Flex maxW={"1800px"} h={"100vh"} mx={"auto"} border={"1px solid"} borderColor={"gray.300"}>
          <Profile />
-         <Flex flexDirection={"column"} flex={1}>
+         <Flex h={"full"} flexDirection={"column"} flex={1}>
             <Navbar />
             <Outlet />
          </Flex>
